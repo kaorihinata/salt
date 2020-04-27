@@ -678,6 +678,9 @@ def pytest_parametrized(session, coverage, transport, crypto):
     # Install requirements
     _install_requirements(session, transport)
 
+    session.run(
+        "pip", "uninstall", "-y", "pytest-salt", silent=True,
+    )
     if crypto:
         session.run(
             "pip",
